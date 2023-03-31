@@ -1,0 +1,14 @@
+{% extends 'jira/base.html' %}
+
+{% block content %}
+    {% for task in tasks_ %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4 class="card-title"> Номер задания {{ task.pk }}: {{ task.title }} </h4>
+                <h6 class="card-subtitle mb-2 text-muted">Статус: {{ task.status }}</h6>
+                <p class="card-text">Текущий исполнитель: {{ task.assignee }}</p>                
+                <p class="card-text">Назначено на спринт: {{ task.sprint }}</p>
+            </div>
+        </div>
+    {% endfor %} 
+{% endblock content %}

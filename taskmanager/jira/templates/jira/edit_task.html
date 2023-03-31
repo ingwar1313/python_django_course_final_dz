@@ -1,0 +1,24 @@
+{% extends 'jira/base.html' %}
+
+{% block title %}
+Работа над таском
+{% endblock %}
+
+{% block content %}
+    <h1>Работа над таском</h1>
+    <form method="post">
+        <h4 class="card-title"> Номер задания {{ task.pk }}: {{ task.title }} </h4>
+                <p class="card-text">Описание: {{ task.task }}</p> 
+                <h6 class="card-subtitle mb-2 text-muted">Статус: {{ task.status }}</h6>
+                <p class="card-text">Текущий исполнитель: {{ task.assignee }}</p>                
+                <p class="card-text">Назначено на спринт: {{ task.sprint }}</p>
+                <p class="card-text">История изменений: {{ task.change_history }}</p>
+        {% csrf_token %}
+        {{ form.title }} <br>
+        {{ form.task }} <br>
+        {{ form.assignee }} <br>  
+        {{ form.sprint }} <br>      
+        <button type="submit" class="btn btn-success">Добавить</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}

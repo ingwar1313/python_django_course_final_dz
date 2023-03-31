@@ -1,0 +1,25 @@
+{% extends 'jira/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+Аутентификация пользователя
+{% endblock %}
+
+{% block content %}
+    <h1>Аутентификация пользователя</h1>
+    <div class="card">
+        <div class="card-body">
+        <h4 class="card-title">Зайдите под своей учетной записью</h4>
+        
+        <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+        
+        {{ form|crispy }}
+        
+        <button type="submit" class="btn btn-primary btn-block">Войти</button>
+        </form>
+        </div>
+        </div>
+{% endblock %}
